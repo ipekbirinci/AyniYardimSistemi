@@ -34,7 +34,7 @@ class SignUpFragment : Fragment() {
         // val textView: TextView = binding.textView2
 
 
-        //slideshowViewModel.text.observe(viewLifecycleOwner) {
+        //SlideshowViewModel.text.observe(viewLifecycleOwner) {
         //     textView.text = it
         //}
         val myClickableText: TextView = _binding.yeniuye
