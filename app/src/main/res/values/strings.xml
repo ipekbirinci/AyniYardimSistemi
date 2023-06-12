@@ -1,15 +1,36 @@
 <resources>
-    <string name="app_name">AyniYardim</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Ayni Yardım</string>
-    <string name="menu_kıyafet">KIYAFET</string>
+    <string name="app_name">Help</string>
+    <string-array name="help_types">
+        <item>KIYAFET</item>
+        <item>SU</item>
+        <item>ISITICI</item>
+        <item>ÇADIR</item>
+        <item>İLAÇ</item>
+        <item>UYKU TULUMU</item>
+        <item>YİYECEK</item>
+        <item>HİJYEN MALZEMESİ</item>
+        <item>ELEKTRONİK</item>
+    </string-array>
+    <string-array name="miktar_types">
+        <item>1 ADET</item>
+        <item>10 ADET</item>
+        <item>30 ADET</item>
+        <item>50 ADET</item>
+        <item>100 ADET</item>
+        <item>1000 ADET</item>
+    </string-array>
+    <string-array name="beden_types">
+        <item>XS</item>
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+        <item>XXL</item>
+    </string-array>
+    <string-array name="aciliyet_types">
+        <item>AZ ÖNCELİKLİ</item>
+        <item>ORTA ÖNCELİKLİ</item>
+        <item>ÇOK ACİL</item>
+    </string-array>
 
 </resources>
