@@ -1,35 +1,40 @@
 package com.example.help.OfferHelp
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.activity.viewModels
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModel
+import com.example.help.Adapters.YardimTalebiAdapter
 import com.example.help.NewRequest.NewRequest
 import com.example.help.R
 import com.example.help.dataBinding
-import com.example.help.databinding.ActivityLoginBinding
 import com.example.help.databinding.ActivityOfferHelpBinding
-import com.example.help.login.LoginViewModel
 
 class OfferHelp : AppCompatActivity() {
 
     private val binding: ActivityOfferHelpBinding by dataBinding(R.layout.activity_offer_help)
-    private val loginViewModel: LoginViewModel by viewModels ()
+    private val offerHelpViewModel: OfferHelpViewModel by viewModels ()
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_offer_help)
+        val sp = getSharedPreferences("userId", Context.MODE_PRIVATE)
+        val userId =sp.getString("userId", "test")
+        Log.d("userid","${userId}")
+
+        if(userId!=null){
+            offerHelpViewModel.getRequestByUser(userId)
+        }
+
+
+        offerHelpViewModel.isOfferSuccess.observe(this){
+            val adapter=YardimTalebiAdapter(it.data)
+            binding.yardimtalebiolusturview.adapter=adapter
+        }
 
         listeners()
     }
@@ -39,7 +44,10 @@ class OfferHelp : AppCompatActivity() {
             //bu yeni yardım talep et
             val intent = Intent(this, NewRequest::class.java)
             startActivity(intent)
+
+
         }
+
     }
 
 

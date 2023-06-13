@@ -19,13 +19,14 @@
             android:textColor="@color/black"></TextView>
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:src="@drawable/mainicon"
             ></ImageView>
         <Spinner
             android:id="@+id/helpTypeSpinner"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+
             android:entries="@array/help_types" />
         <Spinner
             android:id="@+id/miktarSpinner"
@@ -36,13 +37,22 @@
             android:id="@+id/bedenSpinner"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:visibility="gone"
             android:entries="@array/beden_types" />
         <Spinner
             android:id="@+id/aciliyetSpinner"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:entries="@array/aciliyet_types" />
+        <EditText
+            android:id="@+id/detailTextField"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Açıklama yazınız">
+
+        </EditText>
         <Button
+            android:id="@+id/createRequest"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="60dp"

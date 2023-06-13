@@ -106,11 +106,9 @@ class MapActivity : AppCompatActivity(),OnMapReadyCallback {
         val turkeyLatLng = LatLng(39.925533, 32.866287) // Türkiye'nin koordinatları
         googleMap.addMarker(MarkerOptions().position(turkeyLatLng).title("Türkiye"))
         // Yakınlaştırma işlemi
-        val zoomLevel = 10f // Yakınlaştırma düzeyi
+        val zoomLevel = 20f // Yakınlaştırma düzeyi
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(turkeyLatLng, zoomLevel))
     }
-
-
 
 
 }

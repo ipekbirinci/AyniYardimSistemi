@@ -1,22 +1,28 @@
 package com.example.help.network
 
-import com.example.help.network.data.LoginResponseData
-import com.example.help.network.data.UserLogin
-import com.example.help.network.data.RequestData
-import com.example.help.network.data.UserRegister
+import com.example.help.network.data.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface HelpService {
 
+    //map listeleme
+
+    //listing ekranı
     @GET("/requests")
     fun getAllRequests(): Call<MutableList<RequestData>>
 
+    //Kullanıcı istekleri
+    @GET("/requests/user/{userId}")
+    fun getRequestByUser(@Path("userId") userId: String): Call<RequestResponse>
+
     //yeni yardım talebi oluştur
-    @POST("/request_create")
-   fun createRequest():Call<RequestData>
+    @POST("/requests")
+   fun createRequest(@Body post:RequestData):Call<Boolean>
+
     //talebi sil
     //talebi düzenle
 

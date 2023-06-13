@@ -15,8 +15,8 @@ import retrofit2.Response
 
 class LoginViewModel : ViewModel() {
 
-    private val isLoginSuccess = MutableLiveData<Boolean>()
-    val isLoginSuccessData: LiveData<Boolean> get() = isLoginSuccess
+    val isLoginSuccess = MutableLiveData<LoginResponseData>()
+    val isLoginSuccessData: LiveData<LoginResponseData> get() = isLoginSuccess
 
     fun login(phone: String, password: String) {
         val userData = UserLogin(phone, password)
@@ -31,7 +31,10 @@ class LoginViewModel : ViewModel() {
                     loggedInUserData?.let {
                         val userId = it.id
                         Log.d("giriş", "userId: $userId")
-                        isLoginSuccess.postValue(it.success)
+                        Log.d("s","success: ${it.success}")
+                       // isLoginSuccess.postValue(success = it.success, id = it.id)
+                        isLoginSuccess.value = LoginResponseData(success = it.success, id = it.id)
+
                     }
 
                 } else {
@@ -46,4 +49,8 @@ class LoginViewModel : ViewModel() {
             }
         })
     }
+}
+
+private fun <T> MutableLiveData<T>.postValue(success: Boolean, id: String) {
+
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,8 +35,17 @@ class LoginActivity : AppCompatActivity() {
     private fun observeViewModel(){
 
         loginViewModel.isLoginSuccessData.observe(this){
-            if(it){
-                //burada sayfa atlayacak
+
+            val success = it.success
+            val id = it.id
+            if(success){
+              //  burada sayfa atlayacakgetus
+                Log.d("itsuccess","sucess: ${it.success}")
+                val sharedPreferences= getSharedPreferences("userId", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                val userId = it.id
+                editor.putString("userId", userId)
+                editor.apply()
                 val intent = Intent(this, OfferHelp::class.java)
                 startActivity(intent)
             }
