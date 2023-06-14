@@ -1,6 +1,7 @@
 package com.example.help.network.data
 
 data class RequestResponse(val data: RequestResponse)
+val RequestResponseDataList=ArrayList<RequestResponseData>()
 
 data class RequestResponseData(
     val _id:String,

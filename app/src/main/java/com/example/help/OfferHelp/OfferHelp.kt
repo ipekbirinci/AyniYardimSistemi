@@ -11,6 +11,9 @@ import com.example.help.NewRequest.NewRequest
 import com.example.help.R
 import com.example.help.dataBinding
 import com.example.help.databinding.ActivityOfferHelpBinding
+import com.example.help.network.data.RequestDataList
+import com.example.help.network.data.RequestResponse
+import com.example.help.network.data.RequestResponseDataList
 
 class OfferHelp : AppCompatActivity() {
 
@@ -30,9 +33,8 @@ class OfferHelp : AppCompatActivity() {
             offerHelpViewModel.getRequestByUser(userId)
         }
 
-
         offerHelpViewModel.isOfferSuccess.observe(this){
-            val adapter=YardimTalebiAdapter(it.data)
+            val adapter=YardimTalebiAdapter(RequestResponseDataList.)
             binding.yardimtalebiolusturview.adapter=adapter
         }
 
