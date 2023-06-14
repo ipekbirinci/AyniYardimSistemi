@@ -6,14 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.help.Adapters.YardimTalebiAdapter
 import com.example.help.NewRequest.NewRequest
 import com.example.help.R
+import com.example.help.RowClickListener
 import com.example.help.dataBinding
 import com.example.help.databinding.ActivityOfferHelpBinding
 import com.example.help.network.data.RequestDataList
 import com.example.help.network.data.RequestResponse
 import com.example.help.network.data.RequestResponseDataList
+import com.example.help.network.response.Help
 
 class OfferHelp : AppCompatActivity() {
 
@@ -25,6 +28,14 @@ class OfferHelp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_offer_help)
+
+        init()
+        listeners()
+        observeViewModels()
+    }
+
+    private fun init() {
+
         val sp = getSharedPreferences("userId", Context.MODE_PRIVATE)
         val userId =sp.getString("userId", "test")
         Log.d("userid","${userId}")
@@ -33,12 +44,31 @@ class OfferHelp : AppCompatActivity() {
             offerHelpViewModel.getRequestByUser(userId)
         }
 
-        offerHelpViewModel.isOfferSuccess.observe(this){
-            val adapter=YardimTalebiAdapter(RequestResponseDataList.)
-            binding.yardimtalebiolusturview.adapter=adapter
-        }
 
-        listeners()
+    }
+
+    private fun observeViewModels() {
+
+        offerHelpViewModel.helpListData.observe(this) { helpList ->
+
+            val adapter = YardimTalebiAdapter(helpList, editClickListener = object : RowClickListener<Help> {
+                override fun onRowClick(pos: Int, item: Help) {
+                    Log.d("ClickedEdit", item.requestDate)
+                }
+            }, deleteClickListener = object : RowClickListener<Help> {
+                override fun onRowClick(pos: Int, item: Help) {
+                    Log.d("ClickedDelete", item.requestDate)
+                }
+            }
+            )
+            binding.yardimtalebiolusturview.adapter = adapter
+            binding.yardimtalebiolusturview.layoutManager = LinearLayoutManager(this@OfferHelp)
+
+            helpList.forEach { help: Help ->
+                Log.d("DataHelp", help.requestDate)
+
+            }
+        }
     }
 
     private fun listeners() {

@@ -1,6 +1,7 @@
 package com.example.help.network
 
 import com.example.help.network.data.*
+import com.example.help.network.response.HelpListResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,7 +18,7 @@ interface HelpService {
 
     //Kullanıcı istekleri
     @GET("/requests/user/{userId}")
-    fun getRequestByUser(@Path("userId") userId: String): Call<RequestResponse>
+    fun getRequestByUser(@Path("userId") userId: String): Call<HelpListResponse>
 
     //yeni yardım talebi oluştur
     @POST("/requests")
