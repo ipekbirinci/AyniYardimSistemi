@@ -3,10 +3,7 @@ package com.example.help.network
 import com.example.help.network.data.*
 import com.example.help.network.response.HelpListResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface HelpService {
 
@@ -25,6 +22,8 @@ interface HelpService {
    fun createRequest(@Body post:RequestData):Call<Boolean>
 
     //talebi sil
+   @DELETE("")
+   fun deleteRequest(@Path("requestId")requestId:String):Call<HelpListResponse>
     //talebi düzenle
 
     //KAYIT OL

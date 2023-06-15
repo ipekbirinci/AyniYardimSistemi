@@ -54,10 +54,13 @@ class OfferHelp : AppCompatActivity() {
             val adapter = YardimTalebiAdapter(helpList, editClickListener = object : RowClickListener<Help> {
                 override fun onRowClick(pos: Int, item: Help) {
                     Log.d("ClickedEdit", item.requestDate)
+                    //güncelleme yapacak
+
                 }
             }, deleteClickListener = object : RowClickListener<Help> {
                 override fun onRowClick(pos: Int, item: Help) {
                     Log.d("ClickedDelete", item.requestDate)
+                    //silece
                 }
             }
             )

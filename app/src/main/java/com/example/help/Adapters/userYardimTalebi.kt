@@ -26,15 +26,14 @@ class YardimTalebiAdapter(
         val inflater = LayoutInflater.from(parent.context)
         val binding: CardCellBinding = DataBindingUtil.inflate(inflater, R.layout.card_cell, parent, false)
         return ViewHolder(binding)
-        
-        //5063650575
-    }
 
+    }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentHelp = requestList[position]
 
         holder.binding.tarih.text = currentHelp.requestDate
-
+        holder.binding.Konum.text= currentHelp.location.toString()
+        holder.binding.Type.text=currentHelp.requestType
 
         holder.binding.duzenle.setOnClickListener {
             editClickListener.onRowClick(position, currentHelp)
@@ -44,51 +43,22 @@ class YardimTalebiAdapter(
             deleteClickListener.onRowClick(position, currentHelp)
         }
 
-
-        when (currentHelp.requestType.trim()) {
-
-            HelpType.KIYAFET.name -> {
-                //holder.binding.albumpicture.background = R.drawable.clean_hands
-            }
-
-            HelpType.SU.name -> {
-
-            }
-
-            HelpType.ISITICI.name -> {
-
-            }
-
-            HelpType.ÇADIR.name -> {
-
-            }
-
-            HelpType.İLAÇ.name -> {
-
-            }
-
-            HelpType.UYKUTULUMU.name -> {
-
-            }
-
-            HelpType.YİYECEK.name -> {
-
-            }
-
-            HelpType.HİJYENMALZEMESİ.name -> {
-
-            }
-
-            HelpType.ELEKTRONİK.name -> {
-
-            }
-
-
+        val backgroundResId = when (currentHelp.requestType.trim()) {
+            HelpType.KIYAFET.name -> R.drawable.shopping_cart
+            HelpType.SU.name -> R.drawable.local_drink
+            HelpType.ISITICI.name -> R.drawable.sunny
+            HelpType.ÇADIR.name -> R.drawable.house_24
+            HelpType.İLAÇ.name -> R.drawable.shopping_cart
+            HelpType.UYKUTULUMU.name -> R.drawable.seat
+            HelpType.YİYECEK.name -> R.drawable.flatware
+            HelpType.HİJYENMALZEMESİ.name -> R.drawable.clean_hands
+            HelpType.ELEKTRONİK.name -> R.drawable.iphone_24
+            else -> 0
         }
-        
-        
 
-
+        if (backgroundResId != 0) {
+            holder.binding.albumpicture.setBackgroundResource(backgroundResId)
+        }
     }
 
     override fun getItemCount(): Int = requestList.size
