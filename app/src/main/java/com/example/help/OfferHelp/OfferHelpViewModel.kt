@@ -20,6 +20,26 @@ class OfferHelpViewModel: ViewModel() {
     private var helpList = MutableLiveData<List<Help>>()
     val helpListData: LiveData<List<Help>> get() = helpList
 
+    fun deleteRequest(requestId: String){
+
+        val call = HelpApi.helpService.deleteRequest(requestId)
+
+        call.enqueue(object : Callback<Boolean> {
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+
+                    }
+
+                } else {
+                    // İstek başarısız oldu, hata işleme yapabilirsiniz
+                }
+            }
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                // İstek başarısız oldu, hata işleme yapabilirsiniz
+            }
+        })
+    }
     fun getRequestByUser(userId: String) {
         val call = HelpApi.helpService.getRequestByUser(userId)
 
@@ -34,8 +54,6 @@ class OfferHelpViewModel: ViewModel() {
                         }
 
                     }
-
-
 
                 } else {
                     // İstek başarısız oldu, hata işleme yapabilirsiniz

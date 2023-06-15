@@ -10,8 +10,9 @@ interface HelpService {
     //map listeleme
 
     //listing ekranı
+
     @GET("/requests")
-    fun getAllRequests(): Call<MutableList<RequestData>>
+    fun getAllRequests(): Call<HelpListResponse>
 
     //Kullanıcı istekleri
     @GET("/requests/user/{userId}")
@@ -22,14 +23,15 @@ interface HelpService {
    fun createRequest(@Body post:RequestData):Call<Boolean>
 
     //talebi sil
-   @DELETE("")
-   fun deleteRequest(@Path("requestId")requestId:String):Call<HelpListResponse>
+   @DELETE("/requests/{requestId}")
+   fun deleteRequest(@Path("requestId")requestId:String):Call<Boolean>
     //talebi düzenle
 
-    //KAYIT OL
+
+    //Giriş yap
     @POST("/users/login")
     fun login(@Body post: UserLogin):Call<LoginResponseData>
-
+   //Kayıt ol
     @POST("/users/signup")
     fun addUser(@Body post: UserRegister): Call<Boolean>
 

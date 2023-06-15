@@ -61,6 +61,10 @@ class OfferHelp : AppCompatActivity() {
                 override fun onRowClick(pos: Int, item: Help) {
                     Log.d("ClickedDelete", item.requestDate)
                     //silece
+                  offerHelpViewModel.deleteRequest(item._id)
+                  //yeni listi adaptere at ve yeniden adapteri çağır
+                    offerHelpViewModel.getRequestByUser(item.userId)
+
                 }
             }
             )
