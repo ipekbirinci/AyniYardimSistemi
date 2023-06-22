@@ -1,8 +1,8 @@
-package com.example.help.network.response
+package com.example.help.network.ListResponse
 
 import com.google.gson.annotations.SerializedName
 
-data class HelpListResponse(
+data class ListResponse(
     val count: Int,
-  @SerializedName("requests")  val result: List<Help>
+  @SerializedName("requests")  val result: List<ListHelp>
 )

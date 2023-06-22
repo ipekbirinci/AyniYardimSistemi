@@ -1,6 +1,6 @@
-package com.example.help.network.response
+package com.example.help.network.ListResponse
 
-data class Help(
+data class ListHelp(
     val __v: Int,
     val _id: String,
     val location: Location,

@@ -55,6 +55,10 @@ class OfferHelp : AppCompatActivity() {
                 override fun onRowClick(pos: Int, item: Help) {
                     Log.d("ClickedEdit", item.requestDate)
                     //güncelleme yapacak
+                    //intent ile bir paremetre yolla isUpdated-> boolean olcak, true ise o sayfadaki değişmesini istemediğim parametreleri disabled yapcam
+                    //adet ve açıklama açık kalacak yani diğerleri görünürlüğü olmayacak
+                    //göndereceğim parametre için data class oluştur sadece detail sadece miktar yada sadece detay ikisi de olabilir
+                    //data class nullable da olabilir
 
                 }
             }, deleteClickListener = object : RowClickListener<Help> {

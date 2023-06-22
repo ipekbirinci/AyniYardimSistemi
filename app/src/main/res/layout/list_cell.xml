@@ -43,8 +43,8 @@
 
             <ImageButton
                 android:id="@+id/detailButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 app:srcCompat="@drawable/detail"
                 android:layout_gravity="center" />
 

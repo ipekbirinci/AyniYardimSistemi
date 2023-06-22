@@ -1,5 +1,6 @@
 package com.example.help.network
 
+import com.example.help.network.ListResponse.ListResponse
 import com.example.help.network.data.*
 import com.example.help.network.response.HelpListResponse
 import retrofit2.Call
@@ -9,10 +10,12 @@ interface HelpService {
 
     //map listeleme
 
+    //Detay Ekranı
+    @GET("/requests/{requestId}")
+    fun getDetail(@Path("requestId")requestId: String): Call<HelpListResponse>
     //listing ekranı
-
     @GET("/requests")
-    fun getAllRequests(): Call<HelpListResponse>
+    fun getAllRequests(): Call<ListResponse>
 
     //Kullanıcı istekleri
     @GET("/requests/user/{userId}")
@@ -26,7 +29,8 @@ interface HelpService {
    @DELETE("/requests/{requestId}")
    fun deleteRequest(@Path("requestId")requestId:String):Call<Boolean>
     //talebi düzenle
-
+   @PATCH("requests/{requestId}")
+   fun updateRequest(@Path("requestId")requestId: String)
 
     //Giriş yap
     @POST("/users/login")

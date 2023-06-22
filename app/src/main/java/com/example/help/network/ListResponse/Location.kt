@@ -1,4 +1,4 @@
-package com.example.help.network.response
+package com.example.help.network.ListResponse
 
 data class Location(
     val X: Float,

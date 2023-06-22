@@ -61,14 +61,34 @@
                 android:gravity="center"
                 ></TextView>
             <TextView
-                android:id="@+id/bedendetay"
+                android:id="@+id/tarihdetay"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:gravity="center"
-                tools:text="Beden"
+                tools:text="Tarih"
                 ></TextView>
+            <TextView
+                android:id="@+id/konumdetay"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:gravity="center"
+                tools:text="Konum"
+                ></TextView>
+            <TextView
+                android:id="@+id/detaystring"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Detaylar."
+                >
+
+            </TextView>
 
         </LinearLayout>
 
